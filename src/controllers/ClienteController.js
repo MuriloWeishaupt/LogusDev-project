@@ -76,6 +76,6 @@ export const loginCliente = async (req, res) => {
 
         res.status(200).json({message: "Login realizado com sucesso!", cliente})
     } catch (error) {
-        
+        res.status(500).json({error: error.message})
     }
 }
