@@ -1,5 +1,5 @@
 import express from 'express'
-import { criarCliente, atualizaCliente, deletaCliente, buscaCliente, buscaClientePorId } from '../controllers/ClienteController.js';
+import { criarCliente, atualizaCliente, deletaCliente, buscaCliente, buscaClientePorId, loginCliente } from '../controllers/ClienteController.js';
 
 const router = express.Router();
 
@@ -8,6 +8,8 @@ router.get('/:id', buscaClientePorId);
 router.post('/', criarCliente);
 router.put('/:id', atualizaCliente);
 router.delete('/:id', deletaCliente);
+router.post('/login', loginCliente);
+
 
 export default router
 

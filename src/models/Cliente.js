@@ -24,7 +24,7 @@ const Cliente = Sequelize.define("Cliente", {
         allowNull: false
     },
 
-    pw: {
+    senha: {
         type: DataTypes.STRING(30),
         allowNull: false
     },
@@ -34,8 +34,10 @@ const Cliente = Sequelize.define("Cliente", {
         allowNull: false
     },
 
-   
-
+    cnh_num: {
+        type: DataTypes.STRING(11),
+        allowNullNul: false
+    },
    
 
 },  { timestamps: true,
