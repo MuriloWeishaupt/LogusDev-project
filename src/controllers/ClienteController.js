@@ -1,4 +1,4 @@
-import Cliente from '../models/cliente.js';
+import Cliente from '../models/Cliente.js';
 
 export const criarCliente = async (req, res) => {
     try {
@@ -64,6 +64,7 @@ export const deletaCliente = async (req, res) => {
 export const loginCliente = async (req, res) => {
     try {
         const { email, senha } = req.body;
+        
         const cliente = await Cliente.findOne({where: { email }});
 
         if (!email || !senha) {
@@ -76,6 +77,6 @@ export const loginCliente = async (req, res) => {
 
         res.status(200).json({message: "Login realizado com sucesso!", cliente})
     } catch (error) {
-        
+
     }
 }

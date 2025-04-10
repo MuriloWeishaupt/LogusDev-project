@@ -1,8 +1,15 @@
 import express from 'express'
 import clienteRoutes from './routers/clientesRoutes.js';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3333;
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(express.json())
 app.use('/clientes', clienteRoutes);
