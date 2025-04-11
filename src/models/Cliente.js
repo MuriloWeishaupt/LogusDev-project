@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import Sequelize from "../database/conexao_database.js";
 
-const Cliente = Sequelize.define("Cliente", {
+const Cliente = Sequelize.define("cliente", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
