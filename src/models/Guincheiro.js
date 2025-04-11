@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import Sequelize from "../database/conexao_database.js";
 
-const Cliente = Sequelize.define("cliente", {
+const Guincheiro = Sequelize.define("Guincheiro", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -36,18 +36,13 @@ const Cliente = Sequelize.define("cliente", {
 
     cnh_num: {
         type: DataTypes.CHAR(11),
-        allowNullNul: false
+        allowNull: false
     },
-   
+
 
 },  { timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at'
 })
 
-export default Cliente
-
-
-
-
-
+export default Guincheiro

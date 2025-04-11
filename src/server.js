@@ -1,5 +1,6 @@
 import express from 'express'
 import clienteRoutes from './routers/clientesRoutes.js';
+import guincheiroRoutes from './routers/guincheirosRoutes.js'
 import cors from 'cors';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
 
 app.use(express.json())
 app.use('/clientes', clienteRoutes);
+app.use('/guincheiros', guincheiroRoutes)
 
 app.listen(PORT, (error) => {
     if (error) {
