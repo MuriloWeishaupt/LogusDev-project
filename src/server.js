@@ -3,6 +3,8 @@ import clienteRoutes from './routers/clientesRoutes.js';
 import guincheiroRoutes from './routers/guincheirosRoutes.js'
 import cors from 'cors';
 
+
+
 const app = express();
 const PORT = 3333;
 
