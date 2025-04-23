@@ -1,5 +1,8 @@
 import { DataTypes } from "sequelize";
 import Sequelize from "../database/conexao_database.js";
+import Guincheiro from "./Guincheiro.js";
+import Cliente from "./Cliente.js";
+import Veiculo from "./Veiculo.js";
 
 const Chamado = Sequelize.define("chamado", {
     id: {
@@ -30,7 +33,8 @@ const Chamado = Sequelize.define("chamado", {
     },
 
     status_chamado: {
-        type: DataTypes.ENUM("AGUARDANDO", "EM ANDAMENTO", "CANCELADO", "CONCLUÍDO"),
+        type: DataTypes.ENUM("aguardando", "em andamento", "cancelado", "concluído"),
+        allowNull: false
     },
 
     descricao: {
@@ -47,15 +51,48 @@ const Chamado = Sequelize.define("chamado", {
 
     completado_em: {
         type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
+        allowNull: true
     },
 
+    carro_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+
+    guincheiro_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+
+    cliente_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    }
 
 },  {
-        timestamps: true,
+        tableName: 'chamados',
+        timestamps: false,
         createdAt: 'created_at',
         updatedAt: 'updated_at'
-})
+});
+
+
+
+Chamado.belongsTo(Veiculo, {
+    foreignKey: 'carro_id',
+    as: 'veiculo'
+});
+
+Chamado.belongsTo(Guincheiro, {
+    foreignKey: 'guincheiro_id',
+    as: 'guincheiro'
+});
+
+Chamado.belongsTo(Cliente, {
+    foreignKey: 'cliente_id',
+    as: 'cliente'
+});
+
+
 
 export default Chamado

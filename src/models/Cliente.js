@@ -36,7 +36,7 @@ const Cliente = Sequelize.define("cliente", {
 
     cnh_num: {
         type: DataTypes.CHAR(11),
-        allowNullNul: false
+        allowNull: false
     },
    
 
