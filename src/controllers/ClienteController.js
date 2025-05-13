@@ -2,8 +2,8 @@ import Cliente from '../models/Cliente.js';
 
 export const criarCliente = async (req, res) => {
     try {
-        const { nome, email, senha, cpf, telefone, cnh_num } = req.body;
-        const novoCliente = await Cliente.create({ nome, email, senha, cpf, telefone, cnh_num });
+        const { nome, email, senha, cpf, telefone, cnh_num,foto_url } = req.body;
+        const novoCliente = await Cliente.create({ nome, email, senha, cpf, telefone, cnh_num,foto_url });
         res.status(201).json(novoCliente);
     } catch (error) {
         res.status(400).json({ error: error.message });   
