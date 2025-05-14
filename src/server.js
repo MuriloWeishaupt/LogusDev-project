@@ -4,11 +4,14 @@ import guincheiroRoutes from './routers/guincheirosRoutes.js';
 import veiculoRoutes from './routers/veiculosRoutes.js';
 import chamadosRoutes from './routers/chamadosRoutes.js';
 import cors from 'cors';
+import { setupSwagger } from '../swagger.js';
 
 
 
 const app = express();
-const PORT = 3333;
+const PORT = 3000;
+
+setupSwagger(app);
 
 app.use(cors({
     origin: '*',
