@@ -16,12 +16,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
-<<<<<<< HEAD
     "jsonwebtoken": "^9.0.2",
-=======
     "minio": "^8.0.5",
     "multer": "^1.4.5-lts.2",
->>>>>>> 537f58c99ddeabec1afefd79e905a62b0f38dac2
     "mysql2": "^3.14.0",
     "sequelize": "^6.37.6",
     "sequelize-cli": "^6.6.2",
