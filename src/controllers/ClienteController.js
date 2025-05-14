@@ -9,11 +9,15 @@ const SECRET = process.env.JWT_SECRET
 
 export const criarCliente = async (req, res) => {
     try {
-        const { nome, email, senha, cpf, telefone, cnh_num } = req.body;
+
+        const { nome, email, senha, cpf, telefone, cnh_num, foto_url } = req.body;
         const senhaHash = await bcrypt.hash(senha, 10);
-        const novoCliente = await Cliente.create({ nome, email, senha: senhaHash, cpf, telefone, cnh_num });
+        const novoCliente = await Cliente.create({ nome, email, senha, cpf, telefone, cnh_num,foto_url });
         const { senha:_, ...clienteSemSenha} = novoCliente.dataValues; 
         res.status(201).json(clienteSemSenha);
+        
+        res.status(201).json(novoCliente);
+
     } catch (error) {
         res.status(400).json({ error: error.message });   
     }

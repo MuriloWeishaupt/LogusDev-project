@@ -38,6 +38,10 @@ const Cliente = Sequelize.define("cliente", {
         type: DataTypes.CHAR(11),
         allowNull: false
     },
+    foto_url:{
+        type: DataTypes.CHAR(255),
+        allowNull: true
+    }
    
 
 },  { timestamps: true,

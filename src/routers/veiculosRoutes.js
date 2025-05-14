@@ -4,7 +4,7 @@ import { adicionarVeiculo, buscaVeiculo, buscaVeiculoPorId, deletaVeiculo } from
 const router = express.Router();
 
 router.get('/', buscaVeiculo);
-router.get('/id', buscaVeiculoPorId);
+router.get('/:id', buscaVeiculoPorId);
 router.post('/', adicionarVeiculo);
 router.delete('/:id', deletaVeiculo);
 

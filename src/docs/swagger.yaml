@@ -1,0 +1,415 @@
+openapi: 3.0.0
+info:
+  title: LogusDev API
+  version: "1.0.0"
+  description: Documentação da API para gerenciamento de clientes
+
+servers:
+  - url: http://localhost:3000
+
+tags:
+  - name: Clientes
+    description: Endpoints relacionados aos clientes
+  - name: Guincheiros
+    description: Endpoints relacionados aos guincheiros
+  - name: Veiculos
+    description: Endpoints relacionados aos veículos
+  - name: Chamados
+    description: Endpoints relacionados aos chamados
+
+paths:
+  /clientes:
+    get:
+      summary: Retorna todos os clientes
+      tags:
+        - Clientes
+      responses:
+        200:
+          description: Lista de clientes retornada com sucesso
+
+    post:
+      summary: Cria um novo cliente
+      tags:
+        - Clientes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                email:
+                  type: string
+                cpf:
+                  type: string
+                senha:
+                  type: string
+                telefone:
+                  type: string
+                cnh_num:
+                  type: string
+      responses:
+        201:
+          description: Cliente criado com sucesso
+
+  /clientes/{id}:
+    get:
+      summary: Retorna um cliente específico por ID
+      tags:
+        - Clientes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do cliente a ser retornado
+          schema:
+            type: string
+      responses:
+        200:
+          description: Cliente retornado com sucesso
+
+    put:
+      summary: Atualiza um cliente existente
+      tags:
+        - Clientes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do cliente a ser atualizado
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                email:
+                  type: string
+                cpf:
+                  type: string
+                senha:
+                  type: string
+                telefone:
+                  type: string
+                cnh_num:
+                  type: string
+      responses:
+        200:
+          description: Cliente atualizado com sucesso
+
+    delete:
+      summary: Deleta um cliente existente
+      tags:
+        - Clientes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do cliente a ser deletado
+          schema:
+            type: string
+      responses:
+        204:
+          description: Cliente deletado com sucesso
+
+  /clientes/login:
+    post:
+      summary: Realiza o login de um cliente
+      tags:
+        - Clientes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                senha:
+                  type: string
+      responses:
+        200:
+          description: Login realizado com sucesso
+
+  /guincheiros:
+    get:
+      summary: Retorna todos os guincheiros
+      tags:
+        - Guincheiros
+      responses:
+        200:
+          description: Lista de guincheiros retornada com sucesso
+
+    post:
+      summary: Cria um novo guincheiro
+      tags:
+        - Guincheiros
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                email:
+                  type: string
+                senha:
+                  type: string
+                cpf:
+                  type: string
+                telefone:
+                  type: string
+                cnh_num:
+                  type: string
+      responses:
+        201:
+          description: Guincheiro criado com sucesso
+
+  /guincheiros/{id}:
+    get:
+      summary: Retorna um guincheiro específico por ID
+      tags:
+        - Guincheiros
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do guincheiro a ser retornado
+          schema:
+            type: string
+      responses:
+        200:
+          description: Guincheiro retornado com sucesso
+
+    put:
+      summary: Atualiza um guincheiro existente
+      tags:
+        - Guincheiros
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do guincheiro a ser atualizado
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                email:
+                  type: string
+                senha:
+                  type: string
+                cpf:
+                  type: string
+                telefone:
+                  type: string
+                cnh_num:
+                  type: string
+      responses:
+        200:
+          description: Guincheiro atualizado com sucesso
+
+    delete:
+      summary: Deleta um guincheiro existente
+      tags:
+        - Guincheiros
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do guincheiro a ser deletado
+          schema:
+            type: string
+      responses:
+        204:
+          description: Guincheiro deletado com sucesso
+
+  /guincheiros/login:
+    post:
+      summary: Realiza o login de um guincheiro
+      tags:
+        - Guincheiros
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                senha:
+                  type: string
+      responses:
+        200:
+          description: Login realizado com sucesso
+
+  /veiculos:
+    get:
+      summary: Retorna todos os veículos
+      tags:
+        - Veiculos
+      responses:
+        200:
+          description: Lista de veículos retornada com sucesso
+
+    post:
+      summary: Cria um novo veículo
+      tags:
+        - Veiculos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                placa:
+                  type: string
+                marca:
+                  type: string
+                modelo:
+                  type: string
+                ano_fabricacao:
+                  type: integer
+      responses:
+        201:
+          description: Veículo criado com sucesso
+
+  /veiculos/{id}:
+    get:
+      summary: Retorna um veículo específico por ID
+      tags:
+        - Veiculos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do veículo a ser retornado
+          schema:
+            type: string
+      responses:
+        200:
+          description: Veículo retornado com sucesso
+
+    delete:
+      summary: Deleta um veículo existente
+      tags:
+        - Veiculos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do veículo a ser deletado
+          schema:
+            type: string
+      responses:
+        204:
+          description: Veículo deletado com sucesso
+
+  /chamados/chamados:
+    get:
+      summary: Retorna todos os chamados
+      tags:
+        - Chamados
+      responses:
+        200:
+          description: Lista de chamados retornada com sucesso
+
+    post:
+      summary: Cria um novo chamado
+      tags:
+        - Chamados
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                latitude_inicial:
+                  type: number
+                longitude_inicial:
+                  type: number
+                latitude_final:
+                  type: number
+                longitude_final:
+                  type: number
+                status_chamado:
+                  type: string
+                descricao:
+                  type: string
+      responses:
+        201:
+          description: Chamado criado com sucesso
+
+  /chamados/{id}:
+    get:
+      summary: Retorna um chamado específico por ID
+      tags:
+        - Chamados
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do chamado a ser retornado
+          schema:
+            type: string
+      responses:
+        200:
+          description: Chamado retornado com sucesso
+
+    patch:
+      summary: Atualiza o status de um chamado
+      tags:
+        - Chamados
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do chamado a ser atualizado
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status_chamado:
+                  type: string
+      responses:
+        200:
+          description: Status do chamado atualizado com sucesso
+
+    delete:
+      summary: Deleta um chamado existente
+      tags:
+        - Chamados
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do chamado a ser deletado
+          schema:
+            type: string
+      responses:
+        204:
+          description: Chamado deletado com sucesso

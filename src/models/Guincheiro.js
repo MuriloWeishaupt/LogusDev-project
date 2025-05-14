@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import Sequelize from "../database/conexao_database.js";
 
-const Guincheiro = Sequelize.define("Guincheiro", {
+const Guincheiro = Sequelize.define("guincheiro", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
