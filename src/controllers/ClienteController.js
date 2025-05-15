@@ -12,11 +12,9 @@ export const criarCliente = async (req, res) => {
 
         const { nome, email, senha, cpf, telefone, cnh_num, foto_url } = req.body;
         const senhaHash = await bcrypt.hash(senha, 10);
-        const novoCliente = await Cliente.create({ nome, email, senha, cpf, telefone, cnh_num,foto_url });
+        const novoCliente = await Cliente.create({ nome, email, senha:senhaHash, cpf, telefone, cnh_num,foto_url });
         const { senha:_, ...clienteSemSenha} = novoCliente.dataValues; 
         res.status(201).json(clienteSemSenha);
-        
-        res.status(201).json(novoCliente);
 
     } catch (error) {
         res.status(400).json({ error: error.message });   
@@ -95,12 +93,16 @@ export const loginCliente = async (req, res) => {
         const cliente = await Cliente.findOne({where: { email }});
 
         if (!email || !senha) return res.status(400).json({error: "Preencha todos os campos!"})
-
-        if (!cliente) return res.status(404).json({error: "Credenciais inválidas!"})
+        
+        if(!cliente){
+            return res.status(404).json({error:'Credenciais Invalidas!'})
+        }
 
         const comparaSenha = await bcrypt.compare(senha, cliente.senha);
+        if(!comparaSenha){
+            return res.status(401).json({error:"Credenciais Invalidas"})
+        }
 
-        if (!comparaSenha) return res.status(401).json({error: "Credenciais inválidas!"})
 
         const token = jwt.sign({userId: cliente.id}, SECRET, { expiresIn: '1h' } )
         return res.json({
@@ -110,6 +112,10 @@ export const loginCliente = async (req, res) => {
                 id: cliente.id,
                 nome: cliente.nome,
                 email: cliente.email,
+                telefone: cliente.telefone,
+                cpf: cliente.cpf,
+                cnh_num: cliente.cnh_num,
+                foto_url: cliente.foto_url
             }
         });
 

@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const SECRET = process.env.JWT_SECRET
+const SECRET = "teste"
 
 export const verifyJWT = (req, res, next) => {
     const token = req.headers['x-access-token']
